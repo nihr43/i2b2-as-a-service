@@ -1,3 +1,5 @@
+variable "PSQL_PASS" {}
+
 provider "postgresql" {
   host            = "postgres-0"
   port            = 5432

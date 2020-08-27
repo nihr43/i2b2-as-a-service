@@ -5,14 +5,17 @@ pipeline {
       stage('fetch terraform') {
          // terraform statefiles are picky about version, so we pin it in the Makefile
          steps {
-            sh '''
-	      make terraform
-            '''
+            sh 'make terraform'
          }
       }
-      stage('test terraform') {
+      stage('terraform init') {
          steps {
-            sh 'terraform -version'
+            sh 'make .terraform'
+         }
+      }
+      stage('terraform plan') {
+         steps {
+            sh 'make plan'
          }
       }
    }
