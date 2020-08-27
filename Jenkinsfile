@@ -15,6 +15,7 @@ pipeline {
             TF_VAR_I2B2_DB_PASS = credentials('TF_VAR_I2B2_DB_PASS')
          }
          steps {
+	    sh './terraform taint postgresql_database.i2b2_crc' // todo: add ad-hoc destroy option
             sh 'make plan'
          }
       }
