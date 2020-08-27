@@ -27,8 +27,12 @@ pipeline {
             message "accept plan?"
             ok "yes"
          }
+	 environment {
+            TF_VAR_PSQL_PASS    = credentials('TF_VAR_PSQL_PASS')
+            TF_VAR_I2B2_DB_PASS = credentials('TF_VAR_I2B2_DB_PASS')
+         }
          steps {
-           sh 'make plan'
+           sh 'make force-apply'
          }
       }
    }
