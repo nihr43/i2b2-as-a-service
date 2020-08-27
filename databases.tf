@@ -8,7 +8,7 @@ resource "postgresql_role" "i2b2" {
 
 resource "postgresql_database" "i2b2_crc" {
   name              = "i2b2_crc"
-  owner             = "i2b2_crc"
+  owner             = "i2b2"
   allow_connections = true
   depends_on  = [postgresql_role.i2b2]
 }
