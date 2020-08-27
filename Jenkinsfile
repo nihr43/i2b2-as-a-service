@@ -32,7 +32,7 @@ pipeline {
            sh 'make force-apply'
          }
       }
-      stage('load data') {
+      stage('load i2b2-data') {
         environment {
            TF_VAR_I2B2_DB_PASS = credentials('TF_VAR_I2B2_DB_PASS')
         }
@@ -70,7 +70,7 @@ db.driver=org.postgresql.Driver
 db.url=jdbc:postgresql://postgres-0:5432/i2b2_crc
 db.project=demo" > db.properties
              ant -f data_build.xml create_hivedata_tables_release_1-7
-	     and -f data_build.xml db_hivedata_load_data
+	     ant -f data_build.xml db_hivedata_load_data
 	   '''
         }
       }
