@@ -22,5 +22,14 @@ pipeline {
             sh 'make plan'
          }
       }
+      stage('terraform apply') {
+         input {
+            message "accept plan?"
+            ok "yes"
+         }
+         steps {
+           sh 'make plan'
+         }
+      }
    }
 }
