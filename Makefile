@@ -9,7 +9,7 @@ terraform:
 	./terraform init
 
 plan:
-	./terraform plan
+	./terraform plan -no-color
 
 force-apply:
-	./terraform apply --auto-approve
+	./terraform apply -auto-approve -no-color
