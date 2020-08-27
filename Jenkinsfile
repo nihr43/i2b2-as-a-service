@@ -52,6 +52,7 @@ db.driver=org.postgresql.Driver
 db.url=jdbc:postgresql://postgres-0:5432/i2b2_crc
 db.project=demo" > db.properties
              ant -f data_build.xml create_crcdata_tables_release_1-7
+	     ant -f data_build.xml db_demodata_load_data
 	   '''
         }
       }
