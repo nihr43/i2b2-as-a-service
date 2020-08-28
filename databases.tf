@@ -6,9 +6,15 @@ resource "postgresql_role" "i2b2" {
   password = var.I2B2_DB_PASS
 }
 
-resource "postgresql_database" "i2b2_crc" {
-  name              = "i2b2_crc"
+resource "postgresql_database" "i2b2" {
+  name              = "i2b2"
   owner             = "i2b2"
   allow_connections = true
   depends_on  = [postgresql_role.i2b2]
+}
+
+resource "postgresql_schema" "crc" {
+  name  = "crc"
+  owner = "i2b2"
+  depends_on  = [postgresql_database.i2b2]
 }

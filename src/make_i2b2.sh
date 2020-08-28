@@ -16,7 +16,7 @@ db.type=postgresql
 db.username=i2b2
 db.password=${TF_VAR_I2B2_DB_PASS}
 db.driver=org.postgresql.Driver
-db.url=jdbc:postgresql://postgres-0:5432/i2b2_crc
+db.url=jdbc:postgresql://postgres-0:5432/i2b2?currentSchema=crc
 db.project=demo
 EOF
 
@@ -40,7 +40,7 @@ db.type=postgresql
 db.username=i2b2
 db.password=${TF_VAR_I2B2_DB_PASS}
 db.driver=org.postgresql.Driver
-db.url=jdbc:postgresql://postgres-0:5432/i2b2_crc
+db.url=jdbc:postgresql://postgres-0:5432/i2b2?currentSchema=crc
 db.project=demo
 db.dimension=OBSERVATION_FACT
 db.schemaname=I2B2DEMODATA
