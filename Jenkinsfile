@@ -23,7 +23,7 @@ pipeline {
       steps {
         sh '''
 	  if [ "$destroy_database" == "true" ] ; then
-	    ./terraform destroy -auto-approve -no-color
+	    ./terraform state list | while read i ; do ./terraform taint $i ; done
 	  fi
 	'''
         sh 'make plan'
