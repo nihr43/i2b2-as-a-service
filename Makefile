@@ -13,3 +13,6 @@ plan:
 
 force-apply:
 	./terraform apply -auto-approve -no-color
+
+i2b2:
+	sh ./src/make_i2b2.sh
