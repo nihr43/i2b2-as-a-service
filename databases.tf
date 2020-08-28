@@ -14,7 +14,15 @@ resource "postgresql_database" "i2b2" {
 }
 
 resource "postgresql_schema" "crc" {
-  name  = "crc"
-  owner = "i2b2"
+  name     = "crc"
+  owner    = "i2b2"
+  database = "i2b2"
+
+  policy {
+    create = true
+    usage = true
+    role  = "${postgresql_role.i2b2.name}"
+  }
+
   depends_on  = [postgresql_database.i2b2]
 }
