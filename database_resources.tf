@@ -14,10 +14,11 @@ resource "postgresql_database" "i2b2" {
 }
 
 resource "postgresql_schema" "crc" {
-  depends_on = [postgresql_database.i2b2]
-  name       = "crc"
-  owner      = "i2b2"
-  database   = "i2b2"
+  depends_on   = [postgresql_database.i2b2]
+  name         = "crc"
+  owner        = "i2b2"
+  database     = "i2b2"
+  drop_cascade = true
   policy {
     create = true
     usage  = true
@@ -26,10 +27,11 @@ resource "postgresql_schema" "crc" {
 }
 
 resource "postgresql_schema" "hive" {
-  depends_on = [postgresql_database.i2b2]
-  name       = "hive"
-  owner      = "i2b2"
-  database   = "i2b2"
+  depends_on   = [postgresql_database.i2b2]
+  name         = "hive"
+  owner        = "i2b2"
+  database     = "i2b2"
+  drop_cascade = true
   policy {
     create = true
     usage  = true
@@ -38,10 +40,11 @@ resource "postgresql_schema" "hive" {
 }
 
 resource "postgresql_schema" "metadata" {
-  depends_on = [postgresql_database.i2b2]
-  name       = "metadata"
-  owner      = "i2b2"
-  database   = "i2b2"
+  depends_on   = [postgresql_database.i2b2]
+  name         = "metadata"
+  owner        = "i2b2"
+  database     = "i2b2"
+  drop_cascade = true
   policy {
     create = true
     usage  = true
@@ -50,10 +53,11 @@ resource "postgresql_schema" "metadata" {
 }
 
 resource "postgresql_schema" "pm" {
-  depends_on = [postgresql_database.i2b2]
-  name       = "pm"
-  owner      = "i2b2"
-  database   = "i2b2"
+  depends_on   = [postgresql_database.i2b2]
+  name         = "pm"
+  owner        = "i2b2"
+  database     = "i2b2"
+  drop_cascade = true
   policy {
     create = true
     usage  = true
@@ -62,10 +66,11 @@ resource "postgresql_schema" "pm" {
 }
 
 resource "postgresql_schema" "workdata" {
-  depends_on = [postgresql_database.i2b2]
-  name       = "workdata"
-  owner      = "i2b2"
-  database   = "i2b2"
+  depends_on   = [postgresql_database.i2b2]
+  name         = "workdata"
+  owner        = "i2b2"
+  database     = "i2b2"
+  drop_cascade = true
   policy {
     create = true
     usage  = true
