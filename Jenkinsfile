@@ -21,7 +21,7 @@ pipeline {
         TF_VAR_I2B2_DB_PASS = credentials('TF_VAR_I2B2_DB_PASS')
       }
       steps {
-        sh 'if ["$reprovision_database" == "true"] ; then ./terraform taint postgresql_database.i2b2 ; fi'
+        sh 'if [ "$reprovision_database" == "true" ] ; then ./terraform taint postgresql_database.i2b2 ; fi'
         sh 'make plan'
       }
     }
