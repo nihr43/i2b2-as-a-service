@@ -36,6 +36,7 @@ pipeline {
       }
       steps {
         sh 'make force-apply'
+	sh 'make force-apply' // hack: if a db gets re-provisioned, the schemas do not until next run
       }
     }
     stage('load i2b2-data') {
