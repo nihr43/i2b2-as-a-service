@@ -21,7 +21,7 @@ resource "postgresql_schema" "crc" {
   policy {
     create = true
     usage  = true
-    role   = "${postgresql_role.i2b2.name}"
+    role   = postgresql_role.i2b2.name
   }
 }
 
@@ -33,7 +33,7 @@ resource "postgresql_schema" "hive" {
   policy {
     create = true
     usage  = true
-    role   = "${postgresql_role.i2b2.name}"
+    role   = postgresql_role.i2b2.name
   }
 }
 
@@ -45,7 +45,7 @@ resource "postgresql_schema" "metadata" {
   policy {
     create = true
     usage  = true
-    role   = "${postgresql_role.i2b2.name}"
+    role   = postgresql_role.i2b2.name
   }
 }
 
@@ -57,7 +57,7 @@ resource "postgresql_schema" "pm" {
   policy {
     create = true
     usage  = true
-    role   = "${postgresql_role.i2b2.name}"
+    role   = postgresql_role.i2b2.name
   }
 }
 
@@ -69,6 +69,6 @@ resource "postgresql_schema" "workdata" {
   policy {
     create = true
     usage  = true
-    role   = "${postgresql_role.i2b2.name}"
+    role   = postgresql_role.i2b2.name
   }
 }
