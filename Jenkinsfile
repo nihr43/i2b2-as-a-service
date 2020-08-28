@@ -23,7 +23,7 @@ pipeline {
       steps {
         sh '''
 	  if [ "$destroy_database" == "true" ] ; then
-	    ./terraform state list | while read i ; do ./terraform taint $i ; done
+	    ./terraform taint postgresql_database.i2b2
 	  fi
 	'''
         sh 'make plan'
@@ -40,6 +40,7 @@ pipeline {
       }
       steps {
         sh 'make force-apply'
+	sh 'make force-apply'
       }
     }
     stage('load i2b2-data') {
