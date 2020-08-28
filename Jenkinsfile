@@ -24,7 +24,7 @@ pipeline {
         TF_VAR_I2B2_DB_PASS = credentials('TF_VAR_I2B2_DB_PASS')
       }
       steps {
-        sh './terraform taint postgresql_database.i2b2_crc'
+        sh './terraform taint postgresql_database.i2b2'
         sh 'make plan'
       }
     }
