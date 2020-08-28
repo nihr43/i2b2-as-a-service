@@ -23,7 +23,7 @@ pipeline {
       steps {
         sh '''
 	  if [ "$destroy_database" == "true" ] ; then
-	    ./terraform destroy -target=postgresql_database.i2b2 -auto-approve
+	    ./terraform destroy -auto-approve -no-color
 	  fi
 	'''
         sh 'make plan'
