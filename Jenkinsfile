@@ -16,22 +16,16 @@ pipeline {
       }
     }
     stage('terraform plan') {
-      when {
-        environment name: 'reprovision_database', value: 'true'
-      }
       environment {
         TF_VAR_PSQL_PASS    = credentials('TF_VAR_PSQL_PASS')
         TF_VAR_I2B2_DB_PASS = credentials('TF_VAR_I2B2_DB_PASS')
       }
       steps {
-        sh './terraform taint postgresql_database.i2b2'
+        sh 'if ["$reprovision_database" == "true"] ; then ./terraform taint postgresql_database.i2b2 ; fi'
         sh 'make plan'
       }
     }
     stage('terraform apply') {
-      when {
-        environment name: 'reprovision_database', value: 'true'
-      }
       input {
         message "accept plan?"
         ok "yes"
