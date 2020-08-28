@@ -1,7 +1,7 @@
 properties([
   // https://github.com/jenkinsci/pipeline-model-definition-plugin/wiki/Parametrized-pipelines
   parameters([
-    booleanParam(name: 'reprovision_database', defaultValue: true)
+    booleanParam(name: 'destroy_database', defaultValue: true)
   ])
 ])
 
@@ -21,7 +21,11 @@ pipeline {
         TF_VAR_I2B2_DB_PASS = credentials('TF_VAR_I2B2_DB_PASS')
       }
       steps {
-        sh 'if [ "$reprovision_database" == "true" ] ; then ./terraform taint postgresql_database.i2b2 ; fi'
+        sh '''
+	  if [ "$destroy_database" == "true" ] ; then
+	    ./terraform destroy -target=postgresql_database.i2b2 -auto-approve
+	  fi
+	'''
         sh 'make plan'
       }
     }
@@ -36,12 +40,11 @@ pipeline {
       }
       steps {
         sh 'make force-apply'
-	sh 'make force-apply' // hack: if a db gets re-provisioned, the schemas do not until next run
       }
     }
     stage('load i2b2-data') {
       when {
-        environment name: 'reprovision_database', value: 'true'
+        environment name: 'destroy_database', value: 'true'
       }
       environment {
         TF_VAR_I2B2_DB_PASS = credentials('TF_VAR_I2B2_DB_PASS')
