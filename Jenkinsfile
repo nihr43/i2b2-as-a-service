@@ -65,7 +65,7 @@ pipeline {
       }
       steps {
         sh 'make db-artifact'
-	archiveArtifacts artifacts: './i2b2.sql'
+	archiveArtifacts artifacts: 'i2b2.sql'
       }
     }
   }
