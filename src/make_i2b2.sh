@@ -26,7 +26,7 @@ cp "${homedir}"/db.properties .
 echo "db.url=jdbc:postgresql://${DB_HOST}/i2b2?currentSchema=crc" >> db.properties
 ant -f data_build.xml create_crcdata_tables_release_1-7
 ant -f data_build.xml create_procedures_release_1-7
-if [ "$LOAD_DEMODATA" == "true" ] ; then
+if [ "$load_demodata" == "true" ] ; then
   ant -f data_build.xml db_demodata_load_data
 fi
 
@@ -35,7 +35,7 @@ cd "${homedir}"/i2b2-data/edu.harvard.i2b2.data/Release_1-7/NewInstall/Hivedata
 cp "${homedir}"/db.properties .
 echo "db.url=jdbc:postgresql://${DB_HOST}/i2b2?currentSchema=hive" >> db.properties
 ant -f data_build.xml create_hivedata_tables_release_1-7
-if [ "$LOAD_DEMODATA" == "true" ] ; then
+if [ "$load_demodata" == "true" ] ; then
  ant -f data_build.xml db_hivedata_load_data
 fi
 
@@ -54,7 +54,7 @@ EOF
 ant -f data_build.xml create_metadata_tables_release_1-7
 ant -f data_build.xml create_metadata_procedures_release_1-7
 ant -f data_build.xml db_metadata_run_total_count_postgresql
-if [ "$LOAD_DEMODATA" == "true" ] ; then
+if [ "$load_demodata" == "true" ] ; then
   ant -f data_build.xml db_metadata_load_identified_data
   ant -f data_build.xml db_metadata_load_data
 fi
@@ -65,7 +65,7 @@ cp "${homedir}"/db.properties .
 echo "db.url=jdbc:postgresql://${DB_HOST}/i2b2?currentSchema=pm" >> db.properties
 ant -f data_build.xml create_pmdata_tables_release_1-7
 ant -f data_build.xml create_triggers_release_1-7
-if [ "$LOAD_DEMODATA" == "true" ] ; then
+if [ "$load_demodata" == "true" ] ; then
   ant -f data_build.xml db_pmdata_load_data
 fi
 
@@ -74,6 +74,6 @@ cd "${homedir}"/i2b2-data/edu.harvard.i2b2.data/Release_1-7/NewInstall/Workdata
 cp "${homedir}"/db.properties .
 echo "db.url=jdbc:postgresql://${DB_HOST}/i2b2?currentSchema=workdata" >> db.properties
 ant -f data_build.xml create_workdata_tables_release_1-7
-if [ "$LOAD_DEMODATA" == "true" ] ; then
+if [ "$load_demodata" == "true" ] ; then
   ant -f data_build.xml db_workdata_load_data
 fi
