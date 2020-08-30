@@ -18,4 +18,4 @@ i2b2:
 	source ./config.env && sh ./src/make_i2b2.sh
 
 db-artifact:
-	sh ./src/make_db-artifact.sh
+	source ./config.env && sh ./src/make_db-artifact.sh
