@@ -24,7 +24,7 @@ pipeline {
       }
       steps {
         sh '''
-	  if [ "$reprovision_database_database" == "true" ] ; then
+	  if [ "$reprovision_database" == "true" ] ; then
 	    ./terraform taint postgresql_database.i2b2
 	  fi
 	'''
