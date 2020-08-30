@@ -1,4 +1,4 @@
-.PHONY: plan force-apply
+.PHONY: plan force-apply i2b2
 
 terraform:
 	wget -O- https://releases.hashicorp.com/terraform/0.12.24/terraform_0.12.24_linux_amd64.zip | unzip - &&\
@@ -16,3 +16,6 @@ force-apply:
 
 i2b2:
 	source ./config.env && sh ./src/make_i2b2.sh
+
+db-artifact:
+	sh ./src/make_db-artifact.sh

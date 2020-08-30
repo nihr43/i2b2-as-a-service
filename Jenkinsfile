@@ -2,7 +2,8 @@ properties([
   // https://github.com/jenkinsci/pipeline-model-definition-plugin/wiki/Parametrized-pipelines
   parameters([
     booleanParam(name: 'reprovision_database', defaultValue: true),
-    booleanParam(name: 'load_demodata', defaultValue: false)
+    booleanParam(name: 'load_demodata', defaultValue: false),
+    booleanParam(name: 'archive_database', defaultValue: true)
   ])
 ])
 
@@ -53,6 +54,18 @@ pipeline {
       }
       steps {
         sh 'make i2b2'
+      }
+    }
+    stage('archive database') {
+      when {
+        environment name: 'archive_database', value: 'true'
+      }
+      environment {
+        TF_VAR_I2B2_DB_PASS = credentials('TF_VAR_I2B2_DB_PASS')
+      }
+      steps {
+        sh 'make db-artifact'
+	archiveArtifacts artifacts: './i2b2.sql'
       }
     }
   }
