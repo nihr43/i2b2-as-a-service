@@ -1,7 +1,8 @@
 properties([
   // https://github.com/jenkinsci/pipeline-model-definition-plugin/wiki/Parametrized-pipelines
   parameters([
-    booleanParam(name: 'destroy_database', defaultValue: true)
+    booleanParam(name: 'destroy_database', defaultValue: true),
+    booleanParam(name: 'LOAD_DEMODATA', defaultValue: false)
   ])
 ])
 
